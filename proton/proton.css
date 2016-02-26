@@ -1,0 +1,212 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+#Canvas {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.proton-layer {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: default;
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}
+
+.proton-layer.visible {
+    display: block;
+}
+
+.proton-layer.hidden {
+    display: none;
+}
+
+.proton-layer.debug {
+    outline: 2px dashed red;
+}
+
+.proton-layer.debug:hover::before {
+    content: "#"attr(id);
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 10px;
+    background: red;
+    color: white;
+    width: auto;
+    height: 13px;
+    line-height: 13px;
+    white-space: nowrap;
+    padding: 0 2px;
+}
+
+.proton-layer[data-click] {
+    cursor: pointer;
+}
+
+/* Switch board */
+.proton-hidden {
+    opacity: 0;
+    transition: opacity 0.12s linear;
+}
+
+.proton-switchboard-toggle {
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    background: #020F19 url(proton-icons.svg);
+    -webkit-tap-highlight-color: rgba(81,75,130,0.5);
+}
+
+.proton-switchboard-show {
+    background-color: #b9bde7;
+    background-position: 0 -80px;
+    z-index: 999;
+}
+
+.proton-switchboard-show:hover {
+    background-color: #514B82;
+    background-position: -40px -80px;
+}
+
+.proton-mobile .proton-switchboard-show {
+    display: none;
+}
+
+.proton-switchboard-hide {
+    background-position: 0 0;
+}
+
+.proton-switchboard-hide:hover {
+    background-position: -40px 0;
+}
+
+.proton-switchboard-reload {
+    right: 70px;
+    background-position: 0 -40px;
+}
+
+.proton-switchboard-reload:hover {
+    background-position: -40px -40px;
+}
+
+.proton-switchboard {
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 420px;
+    max-width: 100vw;
+    height: 100vh;
+    background: #020F19;
+    color: #B9BDE7;
+    font-family: Helvetica, Arial, sans-serif;
+    display: block;
+    right: -420px;
+    transition: all 0.12s ease-in;
+}
+
+.proton-switchboard.proton-open {
+    right: 0;
+    transition-timing-function: ease-out;
+}
+
+.proton-mobile .proton-switchboard {
+    width: 100vw;
+    right: auto;
+    top: auto;
+    bottom: 100vh;
+}
+
+.proton-mobile .proton-switchboard.proton-open {
+    bottom: 0;
+    transition-timing-function: ease-out;
+}
+
+.proton-switch-groups {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 36px);
+    overflow: auto;
+    padding: 8px 28px 28px;
+}
+
+.proton-switch-group {
+    margin-top: 21px;
+    padding-right: 42px;
+}
+
+.proton-switch-group.orientation {
+    order: -1;
+}
+
+.proton-mobile .proton-switch-group.orientation {
+    display: none;
+}
+
+.proton-switch-group.other {
+    order: 1;
+}
+
+.proton-switch-group > p {
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+
+.proton-switch {
+    height: 28px;
+    border: 1px solid #514B82;
+    border-radius: 2px;
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 28px;
+    margin-right: 10px;
+    font-size: 14px;
+    color: #514B82;
+    cursor: pointer;
+    margin-bottom: 10px;
+    -webkit-tap-highlight-color: rgba(81,75,130,0.5);
+}
+
+.proton-switch:hover {
+    border-color: #B9BDE7;
+    color: #B9BDE7;
+}
+
+.proton-switch.active {
+    color: #020F19;
+    background: #B9BDE7;
+    border-color: #B9BDE7;
+    cursor: default;
+}
+
+.proton-switch-group.other .proton-switch.active {
+    cursor: pointer;
+}
+
+.proton-message {
+    background: #020F19;
+    color: #B9BDE7;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 40vh;
+    padding: 28px;
+}
