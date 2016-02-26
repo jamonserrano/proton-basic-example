@@ -81,7 +81,8 @@ Proton
     function applyURLStates (e, initial) {
         let newStates = e ? e.state : undefined; // get states from the history event…
         if (!newStates) { // …or from the URL
-            const urlStates = window.location.search.slice(1, -1);
+            // remove starting '?' and possible trailing '/'
+            const urlStates = window.location.search.slice(1).replace(/\/$/, "");
             if (urlStates) {
                 newStates = new Set(urlStates.split(","));
             }
